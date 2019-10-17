@@ -6,7 +6,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      pokemons: [],
+      api: [],
       userInput: ''
     }
   }
@@ -19,9 +19,26 @@ class App extends React.Component {
     fetch('https://pokeapi.co/api/v2/pokemon')
     .then(response => response.json())
     .then(data => {
-      this.setState({
-        pokemons: data.results
-      })
+      for(let item of data.results) {
+        fetch(item.url)
+        .then(res => res.json())
+        .then(pokemon => {
+          console.log(pokemon)
+          const arrTypes = [];
+          for (let type of pokemon.types) {
+            arrTypes.push(type.type.name);
+          }
+          const pokeInfo = {
+            name: pokemon.name,
+            image : pokemon.sprites.front_default,
+            typeList : arrTypes
+          }
+          this.setState({
+            api: [...this.state.api, pokeInfo]
+          }) 
+        })
+      }
+
     })
   }
 
@@ -32,11 +49,23 @@ class App extends React.Component {
         <main className="app__main">
           <input type="text" className="search"/>
           <ul className="pokemons__list">
-            {this.state.pokemons
+            {this.state.api
               .map(item => {
                 return (
                   <li className="pokemon__card">
-                    {item.name}
+                    <img src={item.image} alt={item.name} className="pokemon__img"/>
+                    <div className="pokemon__info">
+                      <h2 className="pokemon__name">{item.name}</h2>
+                      
+                      <ul className="pokemon__type">
+                        {item.typeList
+                          .map(type => {
+                            return(
+                              <li className="type">{type}</li>
+                            );
+                          })}
+                      </ul>
+                    </div>
                   </li>
                 );
               })}
