@@ -9,10 +9,20 @@ class App extends React.Component {
       api: [],
       userInput: ''
     }
+
+    this.getUserInput = this.getUserInput.bind(this);
   }
 
   componentDidMount() {
     this.getPokemons();
+  }
+
+  getUserInput(event) {
+    const newInput = event.currentTarget.value;
+
+    this.setState ({
+      userInput: newInput
+    })
   }
 
   getPokemons() {
@@ -47,9 +57,10 @@ class App extends React.Component {
       <div className="app">
         <header className="app__header"><h1>Mi lista de pokemons</h1></header>
         <main className="app__main">
-          <input type="text" className="search"/>
+          <input type="text" className="search" onChange={this.getUserInput}/>
           <ul className="pokemons__list">
             {this.state.api
+              .filter(character => character.name.toUpperCase().includes(this.state.userInput.toUpperCase()))
               .map(item => {
                 return (
                   <li className="pokemon__card">
