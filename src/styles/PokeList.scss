@@ -1,0 +1,18 @@
+.pokemons__list {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    list-style: none;
+}
+
+.pokemon__card {
+    margin: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    border: solid 2px black;
+    background-color: #F29F05;
+}

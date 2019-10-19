@@ -1,5 +1,6 @@
 import React from 'react';
 import PokeCard from '../components/PokeCard';
+import '../styles/PokeList.scss';
 import PropTypes from 'prop-types';
 
 const PokeList = props => {

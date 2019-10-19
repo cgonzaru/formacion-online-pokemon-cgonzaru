@@ -56,7 +56,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <header className="app__header"><h1>Mi lista de pokemons</h1></header>
+        <header className="app__header"><h1 className="app__title">Mi lista de pokemons</h1></header>
         <main className="app__main">
           <input type="text" className="search" onChange={this.getUserInput}/>
           <PokeList 

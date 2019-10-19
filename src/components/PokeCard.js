@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/PokeCard.scss';
 import PropTypes from 'prop-types';
 
 const PokeCard = props => {
