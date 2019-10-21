@@ -9,9 +9,9 @@ const PokeList = props => {
     <ul className="pokemons__list">
       {api
         .filter(character => character.name.toUpperCase().includes(userInput.toUpperCase()))
-        .map(item => {
+        .map((item, index) => {
           return (
-            <li className="pokemon__card">
+            <li className="pokemon__card" key={index}>
               <PokeCard 
                 image={item.image}        
                 name={item.name}

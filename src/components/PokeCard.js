@@ -12,9 +12,9 @@ const PokeCard = props => {
 
         <ul className="pokemon__type">
           {typeList
-            .map(type => {
+            .map((type, index) => {
               return (
-                <li className="type">{type}</li>
+                <li className="type" key={index}>{type}</li>
               );
             })}
         </ul>
