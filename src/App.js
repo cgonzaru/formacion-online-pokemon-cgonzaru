@@ -41,11 +41,14 @@ class App extends React.Component {
               for (let type of pokemon.types) {
                 arrTypes.push(type.type.name);
               }
+              console.log(pokemon)
               const pokeInfo = {
                 name: pokemon.name,
                 image: pokemon.sprites.front_default,
                 typeList: arrTypes,
-                id: pokemon.id
+                id: pokemon.id,
+                weight: pokemon.weight,
+                height: pokemon.height
               }
               this.setState({
                 api: [...this.state.api, pokeInfo]

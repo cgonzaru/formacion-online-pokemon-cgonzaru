@@ -3,7 +3,7 @@ import '../styles/PokeCard.scss';
 import PropTypes from 'prop-types';
 
 const PokeCard = props => {
-  const {image, name, typeList} = props;
+  const {image, name, typeList, weight} = props;
   return (
     <div className="container">
       <img src={image} alt={name} className="pokemon__img" />

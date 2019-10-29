@@ -18,6 +18,7 @@ const PokeList = props => {
                   image={item.image}
                   name={item.name}
                   typeList={item.typeList}
+                  weight={item.weight}
                 />
               </Link>
             </li>
